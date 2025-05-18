@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!--フォント-->
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>展示会サイト</title>
+
+  <!-- SwiperのCSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+  />
+
+  <!-- 外部CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ <!-- ロゴ -->
+ <header>
+  <img src="images/logo.PNG" alt="ロゴ" class="logo">
+  <div class="hamburger" id="hamburger">&#9776;</div>
+</header>
+
+<!-- キャプション -->
+<section class="hero">
+  <h1 class="headline">ようこそ！</h1>
+  <p class="subtext">この展示会では芸術学部の生徒のさまざまな作品、さまざまな世界を覗くことができます。</p>
+</section>
+
+  <section class="characters">
+    <h2>Artist</h2>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" data-link="https://design.kyusan-u.ac.jp/socialdesign/?中村心香">
+          <img src="images/char1.PNG" alt="キャラ1" />
+        </div>
+        <div class="swiper-slide" data-link="https://design.kyusan-u.ac.jp/socialdesign/?梅﨑美和">
+          <img src="images/char2.PNG" alt="キャラ2" />
+        </div>
+        <div class="swiper-slide" data-link="https://example.com/char3">
+          <img src="images/char3.PNG" alt="キャラ3" />
+        </div>
+        <div class="swiper-slide" data-link="https://design.kyusan-u.ac.jp/socialdesign/?佐々木陽菜">
+          <img src="images/char4.PNG" alt="キャラ4" />
+        </div>
+        <div class="swiper-slide" data-link="https://example.com/char5">
+          <img src="images/char5.PNG" alt="キャラ5" />
+        </div>
+        <div class="swiper-slide" data-link="https://design.kyusan-u.ac.jp/socialdesign/?亀崎瑞穂">
+          <img src="images/char6.PNG" alt="キャラ6" />
+        </div>
+      </div>
+  </section>
+
+  <!-- メニューバー -->
+  <nav class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="#">展示の詳細</a></li>
+      <li><a href="#">スケジュールとおしらせ</a></li>
+      <li><a href="#">ご連絡</a></li>
+    </ul>
+  </nav>
+
+  <!-- 今日の日付 -->
+<div class="date" id="today"></div>
+
+  <!-- SwiperのJS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <!-- スクリプト -->
+  <script>
+      const hamburger = document.getElementById("hamburger");
+      const sidebar = document.getElementById("sidebar");
+
+    // 日付
+    document.addEventListener("DOMContentLoaded", function () {
+      const today = new Date();
+      const formattedDate =
+        today.getFullYear() +
+        "/" +
+        (today.getMonth() + 1) +
+        "/" +
+        today.getDate();
+      document.getElementById("today").textContent = formattedDate;
+  
+      // メニュー開閉
+      hamburger.addEventListener("click", function() {
+        sidebar.classList.toggle("open");
+      });
+
+      // メニュー以外押したら閉じる
+      document.addEventListener("click", function(e) {
+        if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+          sidebar.classList.remove("open");
+        }
+      });
+      
+      // スライダー
+      const swiper = new Swiper(".mySwiper", {
+  centeredSlides: true,
+  spaceBetween: 20,
+  loop: true,
+  initialSlide: 0,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+  grabCursor: true,
+  breakpoints: {
+    // スマホ
+    0: {
+      slidesPerView: 2, // 中央+前後がチラ見えするくらい
+    },
+    // タブレット〜PC
+    768: {
+      slidesPerView: 3, // 3人並ぶけど、loopも効く
+    },
+  },
+  on: {
+    init: function () {
+      setCenterClass();
+    },
+    slideChangeTransitionEnd: function () {
+      setCenterClass();
+    },
+  },
+});
+  
+      function setCenterClass() {
+        // 全てのスライドからis-centerを除去
+        document.querySelectorAll(".swiper-slide").forEach((el) => {
+          el.classList.remove("is-center");
+        });
+  
+        // 中央のスライドにis-centerを付加
+        const centerSlide = document.querySelector(".swiper-slide.swiper-slide-active");
+        if (centerSlide) {
+          centerSlide.classList.add("is-center");
+        }
+      }
+  
+      // data-linkを読んでリンク先に遷移（新タブで）
+document.querySelectorAll(".swiper-slide").forEach((slide) => {
+  const link = slide.getAttribute("data-link");
+  if (link) {
+    slide.addEventListener("click", () => {
+      window.open(link, "_blank");
+    });
+  }
+});
+    });
+  </script>
+</body>
+</html>
