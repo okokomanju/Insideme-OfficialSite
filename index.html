@@ -27,6 +27,7 @@
 <section class="hero">
   <h1 class="headline">ようこそ！</h1>
   <p class="subtext">この展示会では芸術学部の生徒のさまざまな作品、さまざまな世界を覗くことができます。</p>
+  <p class="subtext">~似顔絵をクリックorタップで個人のサイトが見れるよ！~</p>
 </section>
 
   <section class="characters">
@@ -39,13 +40,13 @@
         <div class="swiper-slide" data-link="https://design.kyusan-u.ac.jp/socialdesign/?梅﨑美和">
           <img src="images/char2.PNG" alt="キャラ2" />
         </div>
-        <div class="swiper-slide" data-link="https://example.com/char3">
+        <div class="swiper-slide" data-link="pages/Akari.html">
           <img src="images/char3.PNG" alt="キャラ3" />
         </div>
         <div class="swiper-slide" data-link="https://design.kyusan-u.ac.jp/socialdesign/?佐々木陽菜">
           <img src="images/char4.PNG" alt="キャラ4" />
         </div>
-        <div class="swiper-slide" data-link="https://example.com/char5">
+        <div class="swiper-slide" data-link="pages/Yukie.html">
           <img src="images/char5.PNG" alt="キャラ5" />
         </div>
         <div class="swiper-slide" data-link="https://design.kyusan-u.ac.jp/socialdesign/?亀崎瑞穂">
@@ -57,9 +58,10 @@
   <!-- メニューバー -->
   <nav class="sidebar" id="sidebar">
     <ul>
-      <li><a href="#">展示の詳細</a></li>
-      <li><a href="#">スケジュールとおしらせ</a></li>
-      <li><a href="#">ご連絡</a></li>
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="https://design.kyusan-u.ac.jp/socialdesign/?中村心香/情報デザイン研究I">展示の詳細</a></li>
+      <li><a href="pages/about.html">スケジュールとおしらせ</a></li>
+      <li><a href="pages/about-2.html">ご連絡</a></li>
     </ul>
   </nav>
 
@@ -90,12 +92,14 @@
         sidebar.classList.toggle("open");
       });
 
-      // メニュー以外押したら閉じる
-      document.addEventListener("click", function(e) {
-        if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
-          sidebar.classList.remove("open");
-        }
-      });
+      // メニュー以外押したら閉じる（リンククリックの妨げにならないように調整）
+document.addEventListener("click", function(e) {
+  const isClickInside = sidebar.contains(e.target) || hamburger.contains(e.target);
+  const isLinkClick = e.target.closest('a');
+  if (!isClickInside && !isLinkClick) {
+    sidebar.classList.remove("open");
+  }
+});
       
       // スライダー
       const swiper = new Swiper(".mySwiper", {

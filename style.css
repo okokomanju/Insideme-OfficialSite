@@ -26,18 +26,18 @@ body {
     font-family: 'Zen Maru Gothic', sans-serif;
     text-align: center;
     margin-top: 10px;
-    color: #8dc6ff ;
+    color: #6ab3fc ;
   }
 
   .headline {
-    font-size: 1.5rem;
+    font-size: 2rem;
     opacity: 0;
     transform: translateY(50px);
     animation: fadeUp 1s forwards;
   }
 
   .subtext {
-    font-size: 1rem;
+    font-size: 1.5rem;
     opacity: 0;
     transform: translateY(50px);
     animation: fadeUp 1s forwards 0.5s;
@@ -47,6 +47,37 @@ body {
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  .qr-image {
+    width: 300px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 30px;  /* 角の丸み。 */
+  }
+
+  .Art-image {
+    display: flex;
+    justify-content: center;  /* 中央寄せ */
+    gap: 10px;
+    flex-wrap: wrap;  /* 画面が狭くなったら折り返す */
+    padding: 20px;
+  }
+  
+  .Art-image img {
+    max-width: 100%;     /* 親の幅に応じて縮む */
+    width: 300px;        /* 基本サイズ */
+    height: auto;        /* 比率を維持 */
+    border-radius: 15px;
+    object-fit: cover;   /* トリミングして整える（必要に応じて） */
+  }
+
+  @media (max-width: 600px) {
+    img {
+      width: 100%;
+      max-width: 100%;
     }
   }
 

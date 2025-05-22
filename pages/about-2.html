@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>展示会サイト</title>
+
+  <!-- フォント -->
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+
+  <!-- SwiperのCSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <!-- 外部CSS -->
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <!-- ロゴ -->
+  <header>
+    <img src="../images/logo.PNG" alt="ロゴ" class="logo">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </header>
+
+  <!-- キャプション -->
+  <section class="hero">
+    <h1 class="headline">主催の中村へのご連絡はこちらのDMから</h1>
+    <p class="subtext">
+      Instagramアカウント→
+      <a href="https://www.instagram.com/conoca.art?igsh=d3F0N2d4Y3M0cHh4&utm_source=qr" target="_blank" rel="noopener noreferrer">@conoca.art</a>
+    </p>
+  </section>
+
+  <!-- QR画像 -->
+  <img src="../images/qr-me.jpg" alt="QR" class="qr-image" />
+
+   <!-- メニューバー -->
+   <nav class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="../index.html">ホーム</a></li>
+      <li><a href="https://design.kyusan-u.ac.jp/socialdesign/?中村心香/情報デザイン研究I">展示の詳細</a></li>
+      <li><a href="../pages/about.html">スケジュールとおしらせ</a></li>
+      <li><a href="../pages/about-2.html">ご連絡</a></li>
+    </ul>
+  </nav>
+
+  <!-- 今日の日付 -->
+<div class="date" id="today"></div>
+
+  <!-- JavaScript -->
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar"); // ← sidebarの要素が必要ならHTMLに追加してね
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const today = new Date();
+      const formattedDate =
+        today.getFullYear() +
+        "/" +
+        (today.getMonth() + 1) +
+        "/" +
+        today.getDate();
+      document.getElementById("today").textContent = formattedDate;
+
+      // メニュー開閉
+      hamburger.addEventListener("click", function () {
+        sidebar.classList.toggle("open");
+      });
+
+      // メニュー以外押したら閉じる
+      document.addEventListener("click", function (e) {
+        const isClickInside = sidebar.contains(e.target) || hamburger.contains(e.target);
+        const isLinkClick = e.target.closest("a");
+        if (!isClickInside && !isLinkClick) {
+          sidebar.classList.remove("open");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

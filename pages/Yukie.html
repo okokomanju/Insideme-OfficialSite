@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>展示会サイト</title>
+
+  <!-- フォント -->
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+
+  <!-- SwiperのCSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <!-- 外部CSS -->
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <!-- ロゴ -->
+  <header>
+    <img src="../images/logo.PNG" alt="ロゴ" class="logo">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </header>
+
+  <!-- キャプション -->
+  <section class="hero">
+    <h1 class="headline">久保夢紀-Kubo Yukie-</h1>
+    <p class="subtext">専攻
+      ・芸術学部ビジュアルデザイン学科イラストレーション専攻
+      一言
+      ・『かわいい』を求めて頑張ってます！
+      </p>
+      <p class="subtext">
+        ~↓タップして拡大~
+        </p>
+  </section>
+
+  <!-- ポスター画像 -->
+  <div class="Art-image">
+    <a href="../images/TennjiDate.MOV" data-lightbox="gallery">
+      <img src="../images/TennjiDate.MOV" alt="Art">
+    </a>
+  </div>
+
+
+
+   <!-- メニューバー -->
+   <nav class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="../index.html">ホーム</a></li>
+      <li><a href="https://design.kyusan-u.ac.jp/socialdesign/?中村心香/情報デザイン研究I">展示の詳細</a></li>
+      <li><a href="../pages/about.html">スケジュールとおしらせ</a></li>
+      <li><a href="../pages/about-2.html">ご連絡</a></li>
+    </ul>
+  </nav>
+
+  <!-- 今日の日付 -->
+<div class="date" id="today"></div>
+
+  <!-- JavaScript -->
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar"); // ← sidebarの要素が必要ならHTMLに追加してね
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const today = new Date();
+      const formattedDate =
+        today.getFullYear() +
+        "/" +
+        (today.getMonth() + 1) +
+        "/" +
+        today.getDate();
+      document.getElementById("today").textContent = formattedDate;
+
+      // メニュー開閉
+      hamburger.addEventListener("click", function () {
+        sidebar.classList.toggle("open");
+      });
+
+      // メニュー以外押したら閉じる
+      document.addEventListener("click", function (e) {
+        const isClickInside = sidebar.contains(e.target) || hamburger.contains(e.target);
+        const isLinkClick = e.target.closest("a");
+        if (!isClickInside && !isLinkClick) {
+          sidebar.classList.remove("open");
+        }
+      });
+    });
+    src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"
+  </script>
+</body>
+</html>
