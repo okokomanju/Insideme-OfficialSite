@@ -13,20 +13,39 @@ body {
   }
 
   .logo {
-    height: 80px;
+    max-width: 100%;
+    height: auto;
+    max-height: 100px;
+    display: block;
+  }
+  
+  @media (max-width: 400px) {
+    .logo {
+      max-height: 130px;
+    }
   }
 
   .hamburger {
-    font-size: 30px;
+    position: fixed;
+    top: 2rem;
+    right: 1rem;
+    font-size: 50px;
     cursor: pointer;
     z-index: 1001;
+    color: #2b7ed0 ;
+  }
+
+  @media (max-width: 600px) {
+    .hamburger {
+      top: 4.2rem;
+    }
   }
 
   .hero {
     font-family: 'Zen Maru Gothic', sans-serif;
     text-align: center;
     margin-top: 10px;
-    color: #6ab3fc ;
+    color: #42a1ff ;
   }
 
   .headline {
@@ -42,6 +61,15 @@ body {
     transform: translateY(50px);
     animation: fadeUp 1s forwards 0.5s;
   }
+
+  .subtext2 {
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeUp 1s forwards 0.5s;
+    color: #6ab3fc ;
+  }
+
 
   @keyframes fadeUp {
     to {
@@ -190,4 +218,31 @@ body {
     }
     
   
-  
+  /* レスポンシブな16:9動画 */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 アスペクト比 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.2);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* タイトル */
+.video-title {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 20px;
+  margin-top: 30px;
+  text-align: center;
+  color: #333;
+}
