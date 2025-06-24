@@ -112,7 +112,7 @@ body {
   .characters {
     font-family: 'Zen Maru Gothic', sans-serif;
     text-align: center;
-    color: #247bd3;
+    color: #2b7ed0 ;
     margin-top: 50px;
   }
 
@@ -191,6 +191,15 @@ body {
   .sidebar a {
     text-decoration: none;
     color: #8dc6ff ;
+    transition: color 0.3s ease; /* 色変化 */
+  }
+  /* ホバー時（マウスを乗せたとき） */
+  .sidebar a:hover {
+    color: #2b7ed0 ;
+  }
+  /* ホバー時（スマホタップ） */
+  .sidebar a:active {
+    color: #2b7ed0 ;
   }
 
   @media (max-width: 768px) {
@@ -245,4 +254,43 @@ body {
   margin-top: 30px;
   text-align: center;
   color: #333;
+}
+
+/* 全体を中央に配置 */
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 30vh; 
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+/* テキストとフォント */
+.about-text {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 18px;
+  color: #6ab3fc;
+}
+
+/* ボタン風リンク */
+.about-button {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #6ab3fc;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.about-button:hover {
+  background-color: #2b7ed0 ;
+}
+
+.about-button:active {
+  background-color: #0066cc;
+  transform: scale(0.98); /* 押した感の演出 */
 }
