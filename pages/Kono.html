@@ -1,96 +1,77 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <!--フォント-->
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>inside me ~私の世界~</title>
+  <title>展示会サイト</title>
+
+  <!-- フォント -->
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
 
   <!-- SwiperのCSS -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
   <!-- 外部CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
- <!-- ロゴ -->
- <header>
-  <img src="images/logo.PNG" alt="ロゴ" class="logo">
-  <div class="hamburger" id="hamburger">&#9776;</div>
-</header>
+  <!-- ロゴ -->
+  <header>
+    <img src="../images/logo.PNG" alt="ロゴ" class="logo">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </header>
 
-<!-- キャプション -->
-<section class="hero">
-  <h1 class="headline">ようこそ。</h1>
-  <p class="subtext">このオンライン展示会では芸術学部の学生のさまざまな作品、</p>
-  <p class="subtext">さまざまな「世界」を覗くことができます。</p>
-  <p class="subtext2">~似顔絵をクリックorタップで展示が見れるよ！~</p>
-</section>
+  <!-- キャプション -->
+  <section class="hero">
+    <h1 class="headline">中村 心香 の作品</h1>
+    <p class="subtext">ロゴデザイン、イラスト制作、web制作、楽曲とMV制作などなど
+      </p>
+      <p class="subtext">
+        ~↓タップして拡大~
+        </p>
+  </section>
 
-  <section class="characters">
-    <h2>Artist</h2>
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" data-link="pages/Kono.html">
-          <img src="images/char1.PNG" alt="キャラ1" />
+        <div class="swiper-slide" data-link=images/MP1.jpg>
+          <img src="../images/KP1.jpg" alt="キャラ1" />
         </div>
-        <div class="swiper-slide" data-link="pages/Ume.html">
-          <img src="images/char2.PNG" alt="キャラ2" />
+        <div class="swiper-slide" data-link=images/MP2.jpg>
+          <img src="../images/KP2.jpg" alt="キャラ2" />
         </div>
-        <div class="swiper-slide" data-link="pages/Akari.html">
-          <img src="images/char3.PNG" alt="キャラ3" />
+        <div class="swiper-slide" data-link=images/MP3.jpg>
+          <img src="../images/KP3.jpg" alt="キャラ3" />
         </div>
-        <div class="swiper-slide" data-link="pages/Hina.html">
-          <img src="images/char4.PNG" alt="キャラ4" />
+        <div class="swiper-slide" data-link=images/MP4.jpg>
+          <img src="../images/KP4.jpg" alt="キャラ4" />
         </div>
-        <div class="swiper-slide" data-link="pages/Yukie.html">
-          <img src="images/char5.PNG" alt="キャラ5" />
+        <div class="swiper-slide" data-link=images/MP5.jpg>
+          <img src="../images/KP5.jpg" alt="キャラ5" />
         </div>
-        <div class="swiper-slide" data-link="pages/Kame.html">
-          <img src="images/char6.PNG" alt="キャラ6" />
+        <div class="swiper-slide" data-link=images/MP6.jpg>
+          <img src="../images/KP6.jpg" alt="キャラ6" />
         </div>
       </div>
   </section>
-
   <div style="height: 100px;"></div>
-<!-- キャプション -->
-<section class="hero">
-  <h1 class="headline">....  展示の様子  ....</h1>
-  <p class="subtext">(タップで拡大、左上の＜でこのページに戻ります)</p>
-</section>
-
-  <!-- 画像 -->
-  <div class="Art-image">
-    <a href="images/Tenji-inside.JPEG" data-lightbox="gallery">
-      <img src="images/Tenji-inside.JPEG" alt="Art">
-    </a>
-    <a href="images/Tenji-caption.JPEG" data-lightbox="gallery">
-      <img src="images/Tenji-caption.JPEG" alt="Art">
-    </a>
-  </div>
-  <div style="height: 100px;"></div>
-  
-  
-  <!-- メニューバー -->
+ 
+   <!-- メニューバー -->
   <nav class="sidebar" id="sidebar">
     <ul>
       <p >menu</p>
-      <li><a href="index.html">ホーム</a></li>
-      <li><a href="pages/about-0.html">展示の詳細</a></li>
-      <li><a href="pages/about.html">スケジュールとおしらせ</a></li>
-      <li><a href="pages/about-2.html">ご連絡</a></li>
+      <li><a href="../index.html">ホーム</a></li>
+      <li><a href="../pages/about-0.html">展示の詳細</a></li>
+      <li><a href="../pages/about.html">スケジュールとおしらせ</a></li>
+      <li><a href="../pages/about-2.html">ご連絡</a></li>
       <br>
       <p >Artist</p>
-      <li><a href="pages/Kono.html">中村心香</a></li>
-      <li><a href="pages/Ume.html">梅 さん</a></li>
-      <li><a href="pages/Akari.html">あかりん</a></li>
-      <li><a href="pages/Hina.html">佐々木 陽菜 さん</a></li>
-      <li><a href="pages/Yukie.html">ゆきちゃん❤︎</a></li>
-      <li><a href="pages/Kame.html">亀 さん</a></li>
+      <li><a href="../pages/Kono.html">中村心香</a></li>
+      <li><a href="../pages/Ume.html">梅 さん</a></li>
+      <li><a href="../pages/Akari.html">あかりん</a></li>
+      <li><a href="../pages/Hina.html">佐々木 陽菜 さん</a></li>
+      <li><a href="../pages/Yukie.html">ゆきちゃん❤︎</a></li>
+      <li><a href="../pages/Kame.html">亀 さん</a></li>
     </ul>
   </nav>
 

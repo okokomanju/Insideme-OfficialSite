@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>展示会サイト</title>
+
+  <!-- フォント -->
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+
+  <!-- SwiperのCSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <!-- 外部CSS -->
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <!-- ロゴ -->
+  <header>
+    <img src="../images/logo.PNG" alt="ロゴ" class="logo">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </header>
+
+  <!-- キャプション -->
+  <section class="hero">
+    <h1 class="headline">梅 さんの作品</h1>
+    <p class="subtext">立体造形の授業にて制作。
+      </p>
+      <p class="subtext">
+        ~↓タップして拡大~
+        </p>
+  </section>
+
+  <div class="Art-image">
+    <a href="../images/UP1.JPEG" data-lightbox="gallery">
+      <img src="../images/UP1.JPEG" alt="Art">
+    </a>
+    <a href="../images/UP2.JPEG" data-lightbox="gallery">
+      <img src="../images/UP2.JPEG" alt="Art">
+    </a>
+    
+    
+      <div class="centered-content">
+        <p class="about-text">
+          芸術学部ソーシャルデザイン学科情報デザイン専攻3年<br>
+          梅 さんの個人サイトはこちら→
+          <a href="https://design.kyusan-u.ac.jp/socialdesign/?梅﨑美和" class="about-button">こちら</a>
+          をご覧ください。
+        </p>
+      </div>
+      <div style="height: 100px;"></div>
+ 
+   <!-- メニューバー -->
+  <nav class="sidebar" id="sidebar">
+    <ul>
+      <p >menu</p>
+      <li><a href="../index.html">ホーム</a></li>
+      <li><a href="../pages/about-0.html">展示の詳細</a></li>
+      <li><a href="../pages/about.html">スケジュールとおしらせ</a></li>
+      <li><a href="../pages/about-2.html">ご連絡</a></li>
+      <br>
+      <p >Artist</p>
+      <li><a href="../pages/Kono.html">中村心香</a></li>
+      <li><a href="../pages/Ume.html">梅 さん</a></li>
+      <li><a href="../pages/Akari.html">あかりん</a></li>
+      <li><a href="../pages/Hina.html">佐々木 陽菜 さん</a></li>
+      <li><a href="../pages/Yukie.html">ゆきちゃん❤︎</a></li>
+      <li><a href="../pages/Kame.html">亀 さん</a></li>
+    </ul>
+  </nav>
+
+  <!-- 今日の日付 -->
+<div class="date" id="today"></div>
+
+  <!-- SwiperのJS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <!-- スクリプト -->
+  <script>
+      const hamburger = document.getElementById("hamburger");
+      const sidebar = document.getElementById("sidebar");
+
+    // 日付
+    document.addEventListener("DOMContentLoaded", function () {
+      const today = new Date();
+      const formattedDate =
+        today.getFullYear() +
+        "/" +
+        (today.getMonth() + 1) +
+        "/" +
+        today.getDate();
+      document.getElementById("today").textContent = formattedDate;
+  
+      // メニュー開閉
+      hamburger.addEventListener("click", function() {
+        sidebar.classList.toggle("open");
+      });
+
+      // メニュー以外押したら閉じる（リンククリックの妨げにならないように調整）
+document.addEventListener("click", function(e) {
+  const isClickInside = sidebar.contains(e.target) || hamburger.contains(e.target);
+  const isLinkClick = e.target.closest('a');
+  if (!isClickInside && !isLinkClick) {
+    sidebar.classList.remove("open");
+  }
+});
+      
+      // スライダー
+      const swiper = new Swiper(".mySwiper", {
+  centeredSlides: true,
+  spaceBetween: 20,
+  loop: true,
+  initialSlide: 0,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+  grabCursor: true,
+  breakpoints: {
+    // スマホ
+    0: {
+      slidesPerView: 2, // 中央+前後がチラ見えするくらい
+    },
+    // タブレット〜PC
+    768: {
+      slidesPerView: 3, // 3人並ぶけど、loopも効く
+    },
+  },
+  on: {
+    init: function () {
+      setCenterClass();
+    },
+    slideChangeTransitionEnd: function () {
+      setCenterClass();
+    },
+  },
+});
+  
+      function setCenterClass() {
+        // 全てのスライドからis-centerを除去
+        document.querySelectorAll(".swiper-slide").forEach((el) => {
+          el.classList.remove("is-center");
+        });
+  
+        // 中央のスライドにis-centerを付加
+        const centerSlide = document.querySelector(".swiper-slide.swiper-slide-active");
+        if (centerSlide) {
+          centerSlide.classList.add("is-center");
+        }
+      }
+  
+      // data-linkを読んでリンク先に遷移（新タブで）
+document.querySelectorAll(".swiper-slide").forEach((slide) => {
+  const link = slide.getAttribute("data-link");
+  if (link) {
+    slide.addEventListener("click", () => {
+      window.open(link, "_blank");
+    });
+  }
+});
+    });
+  </script>
+</body>
+</html>
