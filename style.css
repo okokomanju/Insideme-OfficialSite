@@ -294,3 +294,70 @@ body {
   background-color: #0066cc;
   transform: scale(0.98); /* 押した感の演出 */
 }
+
+
+ /*トップのニュース*/
+ .news {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+.news h2 {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 1.8em;
+  color: #4b6ecf;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.news-list {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.news-item {
+  background-color: white;
+  border-radius: 15px;
+  padding: 1em;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.news-date {
+  font-size: 0.9em;
+  color: #888;
+}
+
+.news-title {
+  font-weight: bold;
+  margin: 0.3em 0;
+}
+
+.news-text {
+  font-size: 0.95em;
+  color: #333;
+}
+
+.news-text a {
+  color: #6cc5ff;   /* 水色っぽいリンク色 */
+  text-decoration: underline;
+}
+
+.news-text a:hover {
+  color: #4da9e0;   /* ホバー時に少し濃く */
+}
+ 
+
+.site-footer {
+  background-color: #f9f9ff; 
+  color: #9d9d9f;             
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  border-top: 1px solid #ffffff;
+}
+
+
+
